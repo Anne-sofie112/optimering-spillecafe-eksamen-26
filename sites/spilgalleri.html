@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/app.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"/>
+    <title>Spilgalleri</title>
+  </head>
+  
+  <body>
+    <header class="navbar">
+      <button class="back-btn">←</button>
+      <h1 class="spilgalleri-titel">Spilgalleri</h1>
+    <div class="filter-group search-group">
+    <input type="text" id="search-input" placeholder="🔍 Søg efter spil..." />
+    </header>
+    
+    <section class="filter-bar">  
+    <div class="filter-group">
+      <label for="difficulty-select"></label>
+      <select id="difficulty-select">
+        <option value="all">Sværhedsgrad</option>
+        <option value="Let">Let</option>
+        <option value="Mellem">Mellem</option>
+        <option value="Svær">Svær</option>
+      </select>
+    </div>
+    
+    <div class="filter-group">
+      <label for="age-select"></label>
+      <select id="age-select">
+        <option value="all">Alder</option>
+        <option value="6">6+</option>
+        <option value="7">7+</option>
+        <option value="8">8+</option>
+        <option value="10">10+</option>
+        <option value="18">18+</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="genre-select"></label>
+      <select id="genre-select">
+      <option value="all">Genrer</option>
+      <option value="Party">Party</option>
+      <option value="Mysterie">Mysterie</option>
+      <option value="Familie">Børne-/Familie</option>
+      <option value="Deck-builder">Deck-builder</option>
+      <option value="Quiz">Quiz</option>
+      <option value="Terning">Terning</option>
+      <option value="Kooperativt">Kooperativt</option>
+      <option value="Abstract">Abstract</option>
+      <option value="Ordspil">Ordspil</option>
+      <option value="Kortspil">Kortspil</option>
+      <option value="Strategi">Strategi</option>
+      <option value="Fliselægning">Fliselægning</option>
+      </select>
+      </div>
+
+    <div class="filter-group">
+      <label for="playtime-select"></label>
+      <select id="playtime-select">
+        <option value="all">Spilletid</option>
+        <option value="15">15+ min</option>
+        <option value="20">20+ min</option>
+        <option value="30">30+ min</option>
+        <option value="35">35+ min</option>
+        <option value="40">40+ min</option>
+        <option value="45">45+ min</option>
+        <option value="60">60+ min</option>
+        <option value="75">75+ min</option>
+        <option value="120">120+ min</option>
+      </select>
+    </div>
+    </div>
+    </section>
+
+    <main class="main-content">
+      <!--Vestergade spil sektion-->
+      <section class="location-section">
+          <h2 class="location-header">Alle Spil</h2>
+          <!-- Spilcards bliver indsat her via JS -->
+      
+      </section>
+        
+      <!--Alle spil sektion-->
+
+    <section class="game-list-all"></section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>© Spilcaféen</p>
+    </footer>
+
+    <!-- Game Detail Modal -->
+    <dialog id="game-dialog">
+      <form method="dialog">
+        <button id="close-dialog" aria-label="Close">✕</button>
+        <div id="dialog-content"></div>
+      </form>
+    </dialog>
+  
+
+    <script src="../js/app.js"></script>
+  </body>
+</html>

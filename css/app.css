@@ -1,0 +1,632 @@
+/* this is updated */
+:root {
+  /* Text styles */
+  --header-font-family: "poppins";
+  --paragraph-font-family: "montserrat";
+  --tag-font-family: "roboto mono";
+  --card-fontsize-header-1: 14px;
+  --description-fontsize-header-1: 32px;
+  --description-fontsize-header-2: 16px;
+  --description-fontsize-header-3: 12px;
+  --description-fontsize-paragraph: 16px;
+  --tag-fontsize: 10px;
+  --rating-desciption-fontsize: 6px;
+  --rating-card-fontsize: 12px;
+  --spilgalleri-titel-fontsize: 20px;
+  --spilgalleri-header-2-fontsize: 17px;
+
+  /* Color styles */
+  --card-background-color: #fafafa;
+  --tag-background-color: #f8f8f8;
+  --tag-border-color: #e0e0e0;
+  --rating-yellow-gradient: linear-gradient(
+    to bottom,
+    #e6cd53 16%,
+    #ffe35a 51%,
+    #e6cd53 88%
+  );
+
+  /* effect styles */
+  --shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
+  --transition: 250ms ease;
+}
+
+
+.spilgalleri-titel {
+  font-family: var(--header-font-family);
+  font-size: var(--spilgalleri-titel-fontsize);
+}
+
+/* Card in general */
+/* Card */
+.game-card {
+  width: 100%; 
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border-radius: 16px;
+  background: var(--card-background-color);
+  box-shadow: var(--shadow);
+  z-index: 1;
+}
+
+/* Tags */
+.tags {
+  padding: 8px 4px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  border: 0.5px solid var(--tag-border-color);
+  background: var(--tag-background-color);
+  box-shadow: var(--shadow);
+  height: 15px;
+}
+
+.tags p {
+  font-family: var(--tag-font-family);
+  font-size: var(--tag-fontsize);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: -0.11px;
+}
+
+/* Øvre card */
+.top-card {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+}
+
+/* Rating på billede */
+.rating {
+  display: inline-flex;
+  padding: 4px 8px 4px 4px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  border-radius: 0 16px 16px 0;
+  background: var(--rating-yellow-gradient);
+  box-shadow: var(--shadow);
+  z-index: 20;
+}
+
+.rating p {
+  font-family: var(--tag-font-family);
+  font-size: var(--rating-card-fontsize);
+  color: black;
+}
+
+/* Aldersgrænse på billede */
+.age {
+  display: inline-flex;
+  padding: 4px 12px 4px 8px;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 8px;
+  border-radius: 16px 0 0 16px;
+  background: var(--card-background-color);
+  z-index: 20;
+}
+
+.age p {
+  font-family: var(--tag-font-family);
+  font: var(--rating-card-fontsize);
+  color: black;
+}
+
+/* Sværhedsgrad på billede */
+.difficulty {
+  display: inline-flex;
+  padding: 4px 8px 4px 4px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  border-radius: 0 16px 16px 0;
+  background: var(--card-background-color);
+  box-shadow: var(--shadow);
+  z-index: 20;
+  position: absolute;
+  bottom: 135px;
+  left: 0;
+}
+
+.difficulty p {
+  font-family: var(--tag-font-family);
+  font: var(--rating-card-fontsize);
+  color: black;
+}
+
+/* Billede af brætspil */
+.game-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: var(--card-background-color);
+  transition: var(--transition);
+  border-radius: 16px 16px 0 0;
+  display: block;
+}
+
+/* Nedre card */
+.bottom-card {
+  width: 100%;
+  padding: 8px 16px;
+  box-sizing: border-box;
+  border-radius: 0 0 16px 16px;
+  background: var(--card-background-color);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.difficulty-tag {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #e0e0e0;
+  color: #333;
+  font-family: var(--tag-font-family);
+  font-size: var(--tag-fontsize);
+  padding: 4px 10px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  z-index: 20;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+
+
+.card-titel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  font-family: var(--header-font-family);
+  font-size: var(--card-fontsize-header-1);
+  margin: 0;
+  padding: 0;
+}
+
+.tags {
+  display: flex;
+  padding: 4px 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  border-radius: 16px;
+  border: 0.5px solid var(--tag-border-color);
+  background: var(--card-background-color);
+  box-shadow: var(--shadow);
+}
+
+/* FORSIDE */
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  position: relative;
+}
+
+/* Baggrundsbilledet */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../img/forsidebaggrund.jpg");
+  background-size: cover;
+  background-position:center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: 0.2;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.splash-screen {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+.logo {
+  width: 100px;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: transform 1.2s ease-out, opacity 1.2s ease-out;
+}
+
+.logo.animate {
+  transform: scale(2.5);
+  opacity: 1;
+}
+
+.splash-screen.fade-out {
+  opacity: 0;
+}
+
+footer {
+  position: fixed; /* Footer fastlåses i forhold til viewport */
+  bottom: 0; /* Lige ved bunden */
+  left: 50%; /* Flytter venstre kant til midten */
+  transform: translateX(-50%); /* Center footer horisontalt */
+  color: black; /* Tekstfarve */
+  padding: 10px 20px; /* Indvendig margin */
+  text-align: center; /* Tekst centreret */
+  font-size: 14px; /* Valgfri størrelse */
+}
+
+/*LOCATIONSIDE*/
+
+.location {
+  position: relative;
+  z-index: 1;
+}
+
+.location h2 {
+  color: #000;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 80px;
+  background: #ebdfd7;
+  color: #000;
+  font-size: 36px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  text-decoration: none;
+  border-radius: 15px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.button:hover {
+  background: #d8cfc3;
+  transform: translateY(-2px);
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* fade-ind effekt */
+.location {
+  opacity: 0; /* starter skjult */
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.location.fade-in {
+  opacity: 1; /* bliver synlig */
+}
+
+/*SPILGALLERISIDE*/
+/*Navbar*/
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border-bottom: 1px solid #eee;
+  z-index: 1000;
+  height: 56px;
+}
+
+.title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.navbar .back-btn a {
+  list-style: none;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: black;
+}
+
+.search-btn {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+/* Filter bar */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 12px 16px;
+  gap: 8px;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 999;
+}
+
+.main-content {
+  padding-top: 180px;
+  padding-bottom: 80px;
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.dropbtn {
+  background-color: #e9dfd7;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.filter-group select {
+  background-color: #e9dfd7;
+  border: none;
+  appearance: none;
+  border-radius: 20px;
+  padding: 8px 30px 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Show dropdown on click */
+.show {
+  display: block;
+}
+
+/*Vestergade & alle spil sektion*/
+
+/* --- CONTAINER --- */
+main {
+  padding-top: 0;
+  position: relative;
+}
+
+/* --- SEKTIONER --- */
+.location-section {
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 16px;
+  flex-direction: column;
+  gap: 6px
+  
+}
+
+.location-header {
+  font-family: var(--header-font-family);
+  font-size: 28px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 16px;
+  flex-direction: row
+}
+
+
+
+/* --- ALLE SPIL (grid) --- */
+.game-list-all {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  justify-items: stretch;
+  align-items: start;
+}
+
+.top-card img {
+  width: 100%;
+  max-width: 180px;   /* or whatever max width you want */
+  height: 160px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  background: #fff;   /* optional: gives a background if image is not full */
+}
+
+/* --- RESPONSIVE --- */
+
+/*@media (max-width: 768px) {
+  main {
+    margin: 20px;
+    padding: 20px;
+  }*/
+
+  @media screen and (max-width: 768px) {
+  .game-list-all {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+    gap: 16px;
+    padding: 12px;
+  }
+
+  .top-card {
+    height: 140px; /* Slightly smaller images on mobile */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .game-list-all {
+    padding: 8px;
+  }
+}
+
+  .location-section h2 {
+    font-size: 22px;
+  }
+
+  .game-scroll .game-card {
+    width: 180px;
+  }
+
+  .game-list-all {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 16px;
+  }
+
+
+/* =====================
+   SPIL GRID & CARDS
+   ===================== */
+#game-list-all {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  padding: 10rem 0;
+}
+
+/* ====== DIALOG ====== */
+#game-dialog {
+  width: min(800px, 90%);
+  max-height: 90vh;
+  border: none;
+  border-radius: 16px;
+  background: var(--card-background-color);
+  color: var(--description-fontsize-paragraph);
+  box-shadow: var(--shadow-lg);
+  padding: 20px;
+  overflow: hidden;
+  animation: fadeIn 0.3s ease;
+}
+
+#game-dialog::backdrop {
+  background: rgba(2, 2, 2, 0.6);
+  backdrop-filter: blur(2px);
+}
+
+#dialog-content {
+
+  display: flex;
+  flex-direction: column;
+  max-height: calc(90vh - 40px);
+  overflow-y:auto; 
+  
+}
+
+#dialog-content img {
+  width: 100%;
+  height: 350px;
+  object-fit: contain;
+  
+}
+
+.dialog-details {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal{
+  margin-top: 100px;
+}
+
+.dialog-details h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  font-family: var(--header-font-family);
+}
+
+.dialog-details p {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-family: var(--paragraph-font-family);
+}
+
+.dialog-details .game-description {
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+
+/*Sværhedgrads knap på Dialog*/
+
+.dialog-tags {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.dialog-tags .difficulty-tag {
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-family: var(--tag-font-family);
+  font-size: var(--tag-fontsize);
+  font-weight: bold;
+  color: white;
+}
+
+/* Difficulty colors */
+.difficulty-easy {
+  background-color: #4CAF50; 
+}
+
+.difficulty-medium {
+  background-color: #FFC107;  
+  color: #333 !important;     
+}
+
+.difficulty-hard {
+  background-color:#F44336; 
+}
+
+footer {
+  font-family: var(--paragraph-font-family);
+}
