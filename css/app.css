@@ -493,7 +493,7 @@ main {
 
   @media screen and (max-width: 768px) {
   .game-list-all {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+    grid-template-columns: 1fr; /* 1 columns on mobile */
     gap: 16px;
     padding: 12px;
   }
@@ -517,11 +517,7 @@ main {
     width: 180px;
   }
 
-  .game-list-all {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    row-gap: 16px;
-  }
+
 
 
 /* =====================
