@@ -475,13 +475,14 @@ main {
 
 .top-card img {
   width: 100%;
-  max-width: 180px;   /* or whatever max width you want */
+  max-width: none;
   height: 160px;
   object-fit: contain;
   display: block;
-  margin: 0 auto;
-  background: #fff;   /* optional: gives a background if image is not full */
+  margin: 0;
 }
+
+
 
 /* --- RESPONSIVE --- */
 
@@ -493,7 +494,7 @@ main {
 
   @media screen and (max-width: 768px) {
   .game-list-all {
-    grid-template-columns: 1fr; /* 1 columns on mobile */
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
     padding: 12px;
   }
@@ -517,8 +518,7 @@ main {
     width: 180px;
   }
 
-
-
+  
 
 /* =====================
    SPIL GRID & CARDS
