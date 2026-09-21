@@ -50,11 +50,6 @@ if (backBtn) {
   });
 }
 
-// søg
-const searchInput = document.getElementById("search");
-if (searchInput) {
-  searchInput.addEventListener("input", () => displayGames(allGames)); // Adjust as needed
-}
 
 let allGames = [];
 
