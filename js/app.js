@@ -150,30 +150,38 @@ function getDifficultyClass(difficulty) {
 
 function showGameModal(id) {
   const game = allGames.find((g) => g.id == id);
+
   if (!game) return;
 
-  document.querySelector("#dialog-content").innerHTML = /*html*/ `
+  document.querySelector("#dialog-content").innerHTML = `
+    <img 
+      src="${game.image}" 
+      alt="${game.title}" 
+      class="game-image"
+    />
 
-    <img src="${game.image}" alt="${game.title}" class="game-image" />
     <div class="dialog-details">
       <h2>${game.title}</h2>
 
       <div class="dialog-tags">
-      <p class="game-category">${game.genre}</p>
-      <p class="game-rating">☆ ${game.rating}</p>
-      <p class="difficulty-tag ${getDifficultyClass(game.difficulty)}">${
-    game.difficulty
-  }</p>
+        <p class="game-category">${game.genre}</p>
+        <p class="game-rating">☆ ${game.rating}</p>
+        <p class="difficulty-tag ${getDifficultyClass(game.difficulty)}">
+          ${game.difficulty}
+        </p>
       </div>
-      <p>${game.playtime} min</p>
-      <p>${game.players.min}-${game.players.max}</p>
-      <p>${game.age}+</p>
-      <p></strong> ${game.difficulty}</p>
-      <p>${game.language}</p>
-      <p><${game.location}, hylde ${game.shelf}</p>
-      <p class="game-description">${game.rules}</p>
-    </div> 
-  
+
+      <p><strong>Spilletid:</strong> ${game.playtime} min.</p>
+      <p><strong>Spillere:</strong> ${game.players.min}-${game.players.max}</p>
+      <p><strong>Alder:</strong> ${game.age}+ år</p>
+      <p><strong>Sværhedsgrad:</strong> ${game.difficulty}</p>
+      <p><strong>Sprog:</strong> ${game.language}</p>
+      <p><strong>Placering:</strong> ${game.location}, hylde ${game.shelf}</p>
+
+      <p class="game-description">
+        ${game.rules}
+      </p>
+    </div>
   `;
 
   document.querySelector("#game-dialog").showModal();
