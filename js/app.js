@@ -294,6 +294,17 @@ document.addEventListener("DOMContentLoaded", () => {
     .addEventListener("change", filterGames);
 });
 
+document.querySelector("#reset-filters").addEventListener("click", () => {
+  document.querySelector("#search-input").value = "";
+  document.querySelector("#difficulty-select").value = "all";
+  document.querySelector("#age-select").value = "all";
+  document.querySelector("#genre-select").value = "all";
+  document.querySelector("#players-select").value = "all";
+  document.querySelector("#playtime-select").value = "all";
+
+  displayGames(allGames);
+});
+
 //Vestergade spilgalleri
 function showVestergadeGames() {
   if (!allGames || allGames.length === 0) {
