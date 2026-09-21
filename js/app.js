@@ -204,6 +204,7 @@ function filterGames() {
   const difficultyValue = document.querySelector("#difficulty-select").value;
   const ageValue = document.querySelector("#age-select").value;
   const genreValue = document.querySelector("#genre-select").value;
+  const playersValue = document.querySelector("#players-select").value;
   const playtimeValue = document.querySelector("#playtime-select").value;
 
   // Start med alle spil - kopieres efterfølgende
@@ -245,6 +246,14 @@ function filterGames() {
       return game.genre === genreValue;
     });
   }
+if (playersValue !== "all") {
+  const players = Number(playersValue);
+  filteredGames = filteredGames.filter(
+    (game) => game.players.min <= players && game.players.max >= players,
+  );
+}
+
+
 
   // Spilletid - filtrer på spilletid
   if (playtimeValue !== "all") {
@@ -276,6 +285,9 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("#age-select").addEventListener("change", filterGames);
   document
     .querySelector("#genre-select")
+    .addEventListener("change", filterGames);
+  document
+    .querySelector("#players-select")
     .addEventListener("change", filterGames);
   document
     .querySelector("#playtime-select")
