@@ -296,6 +296,21 @@ document.addEventListener("DOMContentLoaded", () => {
     .querySelector("#playtime-select")
     .addEventListener("change", filterGames);
 });
+const filterBar = document.querySelector(".filter-bar");
+
+if (filterBar) {
+  const filterButton = document.createElement("button");
+
+  filterButton.type = "button";
+  filterButton.id = "filter-toggle";
+  filterButton.textContent = "☷  Filtrér (4)";
+
+  filterBar.prepend(filterButton);
+
+  filterButton.addEventListener("click", () => {
+    filterBar.classList.toggle("filters-open");
+  });
+}
 
 document.querySelector("#reset-filters").addEventListener("click", () => {
   document.querySelector("#search-input").value = "";
