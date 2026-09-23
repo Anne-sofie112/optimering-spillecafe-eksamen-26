@@ -216,35 +216,7 @@ body {
   position: relative;
 }
 
-/* Baggrundsbilledet */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("../img/forsidebaggrund.jpg");
-  background-size: cover;
-  background-position:center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  opacity: 0.2;
-  z-index: -1;
-  pointer-events: none;
-}
 
-.splash-screen {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 1;
-  transition: opacity 1s ease;
-}
 
 .logo {
   width: 100px;
@@ -256,10 +228,6 @@ body::before {
 .logo.animate {
   transform: scale(2.5);
   opacity: 1;
-}
-
-.splash-screen.fade-out {
-  opacity: 0;
 }
 
 footer {

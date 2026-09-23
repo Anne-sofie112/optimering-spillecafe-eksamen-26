@@ -1,25 +1,6 @@
 "use strict";
 
-/* ==========================
-   INDEX (splash screen)
-   ========================== */
-if (document.querySelector(".splash-screen")) {
-  document.addEventListener("DOMContentLoaded", () => {
-    const logo = document.querySelector(".logo");
-    const splash = document.querySelector(".splash-screen");
 
-    // Logo-animation
-    setTimeout(() => logo.classList.add("animate"), 800);
-
-    // Fade ud efter 2.5 sekunder
-    setTimeout(() => splash.classList.add("fade-out"), 2500);
-
-    // Skift til location.html efter 3.5 sekunder
-    setTimeout(() => {
-      window.location.href = "sites/location.html";
-    }, 3500);
-  });
-}
 
 /* ==========================
    LOCATION (fade in)
