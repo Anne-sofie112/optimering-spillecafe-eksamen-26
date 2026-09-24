@@ -201,6 +201,13 @@
   box-shadow: var(--shadow);
 }
 
+.tags svg {
+  width: 13px;
+  height: 13px;
+  flex: 0 0 auto;
+  stroke-width: 2;
+}
+
 /* FORSIDE */
 
 body {
@@ -362,7 +369,6 @@ footer {
   box-sizing: border-box;
 }
 
-
 .main-content {
   padding-bottom: 80px;
   margin-top: auto;
@@ -445,7 +451,6 @@ main {
 }
 
 /* --- RESPONSIVE --- */
-
 
 @media screen and (max-width: 768px) {
   .game-list-all {
@@ -653,7 +658,17 @@ main {
 }
 
 .dialog-info-list dt {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   color: #5e5955;
+}
+
+.dialog-info-list dt svg {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+  stroke-width: 2;
 }
 
 .dialog-info-list dd {
@@ -759,7 +774,6 @@ footer {
   font-family: var(--paragraph-font-family);
 }
 
-
 html,
 body {
   overflow-x: hidden;
@@ -785,11 +799,25 @@ body {
 }
 
 .filter-group.search-group label {
+  display: inline-flex;
   font-family: var(--paragraph-font-family);
   font-size: 14px;
   font-weight: 600;
   color: #000;
   white-space: nowrap;
+}
+
+.filter-group label svg,
+#filter-toggle svg,
+#reset-filters svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  stroke-width: 2;
+}
+
+.filter-group label svg {
+  margin-right: 6px;
 }
 
 #search-input {
@@ -804,7 +832,8 @@ body {
 }
 
 .filter-bar .filter-group label {
-  display: block;
+  display: flex;
+  align-items: center;
   margin-bottom: 4px;
   font-family: var(--paragraph-font-family);
   font-size: 13px;
@@ -861,8 +890,6 @@ body {
   color: #000;
   cursor: pointer;
 }
-
-
 
 #reset-filters:hover {
   background: #f5f5f5;

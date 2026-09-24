@@ -1,7 +1,5 @@
 "use strict";
 
-
-
 /* ==========================
    LOCATION (fade in)
    ========================== */
@@ -30,7 +28,6 @@ if (backBtn) {
     window.location.href = "../sites/location.html";
   });
 }
-
 
 let allGames = [];
 
@@ -78,21 +75,25 @@ function displayGame(game) {
         <section class="bottom-card">
             <h2 class="card-titel">${game.title}</h2>
             <div class="tags">
-                <p>${game.genre}</p>
+              <i data-lucide="shapes" aria-hidden="true"></i><p>${game.genre}</p>
             </div>
             <div class="tags">
-                <p>${game.playtime}</p>
+              <i data-lucide="clock-3" aria-hidden="true"></i><p>${game.playtime}</p>
             </div>
             <div class="tags">
-                <p>${game.players.min}-${game.players.max}</p>
+              <i data-lucide="users" aria-hidden="true"></i><p>${game.players.min}-${game.players.max}</p>
             </div>
             <div class="tags">
-                <p>${game.language}</p>
+              <i data-lucide="languages" aria-hidden="true"></i><p>${game.language}</p>
             </div>
         </section>
     </article>
   `;
   gameList.insertAdjacentHTML("beforeend", gameHTML);
+
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
 
   // Tilføj click event til den nye card
   const newCard = gameList.lastElementChild;
@@ -156,10 +157,10 @@ function showGameModal(id) {
       </div>
 
       <dl class="dialog-info-list">
-        <div><dt>Spilletid</dt><dd>${game.playtime} min</dd></div>
-        <div><dt>Spillere</dt><dd>${game.players.min}–${game.players.max} personer</dd></div>
-        <div><dt>Alder</dt><dd>Fra ${game.age} år</dd></div>
-        <div><dt>Sprog</dt><dd>${game.language}</dd></div>
+          <div><dt><i data-lucide="clock-3" aria-hidden="true"></i>Spilletid</dt><dd>${game.playtime} min</dd></div>
+          <div><dt><i data-lucide="users" aria-hidden="true"></i>Spillere</dt><dd>${game.players.min}–${game.players.max} personer</dd></div>
+          <div><dt><i data-lucide="cake" aria-hidden="true"></i>Alder</dt><dd>Fra ${game.age} år</dd></div>
+          <div><dt><i data-lucide="languages" aria-hidden="true"></i>Sprog</dt><dd>${game.language}</dd></div>
       </dl>
 
       <details class="dialog-about">
@@ -170,7 +171,12 @@ function showGameModal(id) {
   `;
 
   const dialog = document.querySelector("#game-dialog");
-  dialog.querySelector(".dialog-close").addEventListener("click", () => dialog.close());
+  dialog
+    .querySelector(".dialog-close")
+    .addEventListener("click", () => dialog.close());
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
   dialog.showModal();
 }
 
@@ -231,14 +237,12 @@ function filterGames() {
       return game.genre === genreValue;
     });
   }
-if (playersValue !== "all") {
-  const players = Number(playersValue);
-  filteredGames = filteredGames.filter(
-    (game) => game.players.min <= players && game.players.max >= players,
-  );
-}
-
-
+  if (playersValue !== "all") {
+    const players = Number(playersValue);
+    filteredGames = filteredGames.filter(
+      (game) => game.players.min <= players && game.players.max >= players,
+    );
+  }
 
   // Spilletid - filtrer på spilletid
   if (playtimeValue !== "all") {
@@ -285,13 +289,17 @@ if (filterBar) {
 
   filterButton.type = "button";
   filterButton.id = "filter-toggle";
-  filterButton.textContent = "☷  Filtrér (4)";
+  filterButton.innerHTML = '<i data-lucide="sliders-horizontal" aria-hidden="true"></i><span>Filtrér (4)</span>';
 
   filterBar.prepend(filterButton);
 
   filterButton.addEventListener("click", () => {
     filterBar.classList.toggle("filters-open");
   });
+}
+
+if (window.lucide) {
+  window.lucide.createIcons();
 }
 
 document.querySelector("#reset-filters").addEventListener("click", () => {
@@ -311,7 +319,7 @@ function showVestergadeGames() {
     return getGames().then(() => {
       showVestergadeGames();
       const filtered = allGames.filter(
-        (g) => g.location && g.location.toLowerCase().trim() === "verstergade"
+        (g) => g.location && g.location.toLowerCase().trim() === "verstergade",
       );
       displayGames(filtered);
       return filtered;
@@ -319,7 +327,7 @@ function showVestergadeGames() {
   }
 
   const filtered = allGames.filter(
-    (g) => g.location && g.location.toLowerCase().trim() === "verstergade"
+    (g) => g.location && g.location.toLowerCase().trim() === "verstergade",
   );
   displayGames(filtered);
   return Promise.resolve(filtered);
