@@ -15,28 +15,75 @@
   </head>
 
   <body>
-    <section class="location">
-      <h2>Hvilken Café?</h2>
-      <div class="button-container">
-        <a href="../sites/spilgalleri.html?location=Vestergade" class="button"
-          >Vestergade</a
-        >
-        <a href="../sites/spilgalleri.html?location=Fredensgade" class="button"
-          >Fredensgade</a
-        >
-        <a href="../sites/spilgalleri.html?location=Aalborg" class="button"
-          >Aalborg</a
-        >
-        <a href="../sites/spilgalleri.html?location=Kolding" class="button"
-          >Kolding</a
-        >
-      </div>
-    </section>
+    <main class="location-page">
+      <img
+        src="../img/logo.transparent.png"
+        alt="Spilcaféen"
+        class="location-page__logo"
+      />
+      <h1 class="location-page__title">Hvilken café?</h1>
+      <p class="location-page__subtitle">
+        Vælg din café for at se, hvilke spil de har.
+      </p>
 
-    <!-- Footer -->
-    <footer>
-      <p>© Spilcaféen</p>
-    </footer>
+      <nav class="location-list" aria-label="Vælg café">
+        <a
+          href="../sites/spilgalleri.html?location=Vestergade"
+          class="location-choice"
+        >
+          <div
+            class="location-choice__image location-choice__image--vestergade"
+            aria-label="Vestergade café"
+          ></div>
+          <div class="location-choice__content">
+            <span class="location-choice__name">Vestergade</span>
+            <span class="location-choice__arrow" aria-hidden="true">→</span>
+          </div>
+        </a>
+
+        <a
+          href="../sites/spilgalleri.html?location=Fredensgade"
+          class="location-choice"
+        >
+          <div
+            class="location-choice__image location-choice__image--fredensgade"
+            aria-label="Fredensgade café"
+          ></div>
+          <div class="location-choice__content">
+            <span class="location-choice__name">Fredensgade</span>
+            <span class="location-choice__arrow" aria-hidden="true">→</span>
+          </div>
+        </a>
+
+        <a
+          href="../sites/spilgalleri.html?location=Aalborg"
+          class="location-choice"
+        >
+          <div
+            class="location-choice__image location-choice__image--aalborg"
+            aria-label="Aalborg café"
+          ></div>
+          <div class="location-choice__content">
+            <span class="location-choice__name">Aalborg</span>
+            <span class="location-choice__arrow" aria-hidden="true">→</span>
+          </div>
+        </a>
+
+        <a
+          href="../sites/spilgalleri.html?location=Kolding"
+          class="location-choice"
+        >
+          <div
+            class="location-choice__image location-choice__image--kolding"
+            aria-label="Kolding café"
+          ></div>
+          <div class="location-choice__content">
+            <span class="location-choice__name">Kolding</span>
+            <span class="location-choice__arrow" aria-hidden="true">→</span>
+          </div>
+        </a>
+      </nav>
+    </main>
 
     <script src="../js/app.js"></script>
   </body>
