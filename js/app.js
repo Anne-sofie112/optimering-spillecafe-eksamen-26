@@ -135,43 +135,44 @@ function showGameModal(id) {
   if (!game) return;
 
   document.querySelector("#dialog-content").innerHTML = `
-    <img 
-      src="${game.image}" 
-      alt="${game.title}" 
-      class="game-image"
-    />
+    <div class="dialog-topbar">
+      <button type="button" class="dialog-close" aria-label="Luk spilinformation">× <span>Luk</span></button>
+    </div>
+
+    <div class="dialog-image-wrap">
+      <img src="${game.image}" alt="${game.title}" class="dialog-game-image" />
+    </div>
 
     <div class="dialog-details">
-      <h2>${game.title}</h2>
+      <div class="dialog-title-row">
+        <h2>${game.title}</h2>
+        <span class="dialog-difficulty ${getDifficultyClass(game.difficulty)}">Sværhedsgrad: ${game.difficulty}</span>
+      </div>
+      <p class="dialog-summary">${game.genre} <span aria-hidden="true">·</span> <span class="dialog-star">★</span> Bedømmelse ${game.rating} ud af 5</p>
 
-      <div class="dialog-tags">
-        <p class="game-category">${game.genre}</p>
-        <p class="game-rating">☆ ${game.rating}</p>
-        <p class="difficulty-tag ${getDifficultyClass(game.difficulty)}">
-          ${game.difficulty}
-        </p>
+      <div class="dialog-shelf">
+        <span class="dialog-shelf-pin" aria-hidden="true">⌖</span>
+        <div><span>Find spillet her</span><strong>${game.location} · Hylde ${game.shelf}</strong></div>
       </div>
 
-      <p><strong>Spilletid:</strong> ${game.playtime} min.</p>
-      <p><strong>Spillere:</strong> ${game.players.min}-${game.players.max}</p>
-      <p><strong>Alder:</strong> ${game.age}+ år</p>
-      <p><strong>Sværhedsgrad:</strong> ${game.difficulty}</p>
-      <p><strong>Sprog:</strong> ${game.language}</p>
-      <p><strong>Placering:</strong> ${game.location}, hylde ${game.shelf}</p>
+      <dl class="dialog-info-list">
+        <div><dt>Spilletid</dt><dd>${game.playtime} min</dd></div>
+        <div><dt>Spillere</dt><dd>${game.players.min}–${game.players.max} personer</dd></div>
+        <div><dt>Alder</dt><dd>Fra ${game.age} år</dd></div>
+        <div><dt>Sprog</dt><dd>${game.language}</dd></div>
+      </dl>
 
-      <p class="game-description">
-        ${game.rules}
-      </p>
+      <details class="dialog-about">
+        <summary>Om spillet <span aria-hidden="true">⌄</span></summary>
+        <p>${game.rules}</p>
+      </details>
     </div>
   `;
 
-  document.querySelector("#game-dialog").showModal();
+  const dialog = document.querySelector("#game-dialog");
+  dialog.querySelector(".dialog-close").addEventListener("click", () => dialog.close());
+  dialog.showModal();
 }
-
-// Luk dialog på klik af X
-document.querySelector("#close-dialog").addEventListener("click", () => {
-  document.querySelector("#game-dialog").close();
-});
 
 // Dropdown-menu //// Åbn/luk dropdowns
 

@@ -485,15 +485,16 @@ main {
 
 /* ====== DIALOG ====== */
 #game-dialog {
-  width: min(800px, 90%);
-  max-height: 90vh;
+  width: min(720px, calc(100% - 32px));
+  max-height: calc(100vh - 16px);
   border: none;
-  border-radius: 16px;
-  background: var(--card-background-color);
-  color: var(--description-fontsize-paragraph);
-  box-shadow: var(--shadow-lg);
-  padding: 20px;
-  overflow: hidden;
+  border-radius: 30px;
+  background: #fffdfa;
+  color: #151515;
+  box-shadow: 0 18px 55px rgba(45, 32, 20, 0.24);
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
   animation: fadeIn 0.3s ease;
 }
 
@@ -505,41 +506,222 @@ main {
 #dialog-content {
   display: flex;
   flex-direction: column;
-  max-height: calc(90vh - 40px);
-  overflow-y: auto;
 }
 
-#dialog-content img {
-  width: 100%;
-  height: 350px;
+.dialog-topbar {
+  min-height: clamp(58px, 8vh, 76px);
+  display: flex;
+  align-items: center;
+  padding: 0 clamp(18px, 5vw, 42px);
+  border-bottom: 1px solid #e7ddd4;
+  font-family: var(--paragraph-font-family);
+}
+
+.dialog-close {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-right: auto;
+  padding: 10px 20px;
+  border: 2px solid #cfc5bd;
+  border-radius: 36px;
+  background: transparent;
+  font: 700 16px var(--paragraph-font-family);
+  cursor: pointer;
+}
+
+.dialog-close:first-letter {
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 0;
+}
+
+.dialog-shelf-pin {
+  color: #bd5436;
+  font-size: 31px;
+  line-height: 1;
+}
+
+.dialog-image-wrap {
+  min-height: 150px;
+  max-height: 220px;
+  margin: 16px 30px 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 23px;
+  background: #f2eae2;
+}
+
+.dialog-game-image {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 220px;
   object-fit: contain;
+  padding: 8px;
+  box-sizing: border-box;
 }
 
 .dialog-details {
-  padding: 20px;
+  padding: 16px clamp(18px, 5vw, 30px) 20px;
   display: flex;
   flex-direction: column;
 }
 
-.modal {
-  margin-top: 100px;
+.dialog-title-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 0;
 }
 
 .dialog-details h2 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+  margin: 0;
+  font: 800 clamp(27px, 4vw, 36px)/1.1 var(--header-font-family);
+  letter-spacing: -1px;
+}
+
+.dialog-difficulty {
+  padding: 8px 14px;
+  border-radius: 28px;
+  background: #e8f3e6;
+  color: #176634;
+  font: 700 clamp(13px, 2vw, 17px) var(--paragraph-font-family);
+  white-space: nowrap;
+}
+
+.dialog-summary {
+  margin: 6px 0 16px;
+  color: #5e5955;
+  font: 500 clamp(14px, 2vw, 17px) var(--paragraph-font-family);
+}
+
+.dialog-star {
+  color: #bd5436;
+  margin: 0 6px;
+}
+
+.dialog-shelf {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 13px 17px;
+  margin-bottom: 16px;
+  border-radius: 22px;
+  background: #f3ece5;
   font-family: var(--header-font-family);
 }
 
-.dialog-details p {
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
+.dialog-shelf div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
   font-family: var(--paragraph-font-family);
 }
 
-.dialog-details .game-description {
-  margin-top: 1rem;
+.dialog-shelf span {
+  font-size: 14px;
+  color: #5e5955;
+}
+
+.dialog-shelf strong {
+  font-size: clamp(16px, 2.5vw, 20px);
+  color: #151515;
+}
+
+.dialog-info-list {
+  margin: 0 0 16px;
+  border: 2px solid #e4dbd3;
+  border-radius: 17px;
+  overflow: hidden;
+}
+
+.dialog-info-list div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px clamp(14px, 4vw, 24px);
+  border-bottom: 1px solid #e4dbd3;
+  font: clamp(14px, 2vw, 16px) var(--paragraph-font-family);
+}
+
+.dialog-info-list div:last-child {
+  border-bottom: 0;
+}
+
+.dialog-info-list dt {
+  color: #5e5955;
+}
+
+.dialog-info-list dd {
+  margin: 0;
+  font-weight: 800;
+  text-align: right;
+}
+
+.dialog-about {
+  border-radius: 18px;
+  background: #f3ece5;
+  font-family: var(--paragraph-font-family);
+}
+
+.dialog-about summary {
+  display: flex;
+  justify-content: space-between;
+  padding: 13px 17px;
+  cursor: pointer;
+  list-style: none;
+  font: 700 clamp(17px, 3vw, 20px) var(--header-font-family);
+}
+
+.dialog-about summary::-webkit-details-marker {
+  display: none;
+}
+
+.dialog-about p {
+  margin: 0;
+  padding: 0 25px 22px;
+  color: #5e5955;
   line-height: 1.6;
+}
+
+@media screen and (max-width: 600px) {
+  #game-dialog {
+    width: calc(100% - 12px);
+    border-radius: 24px;
+  }
+
+  .dialog-image-wrap {
+    min-height: 125px;
+    max-height: 180px;
+    margin: 12px 18px 0;
+    border-radius: 18px;
+  }
+
+  .dialog-game-image {
+    max-height: 180px;
+  }
+
+  .dialog-close {
+    padding: 10px 18px;
+    font-size: 16px;
+  }
+
+  .dialog-shelf {
+    gap: 14px;
+  }
+
+  .dialog-shelf-pin {
+    font-size: 26px;
+  }
+
+  .dialog-info-list div {
+    min-height: 18px;
+    align-items: center;
+  }
 }
 
 /*Sværhedgrads knap på Dialog*/
