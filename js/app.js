@@ -30,6 +30,20 @@ if (backBtn) {
 }
 
 let allGames = [];
+const selectedLocation = new URLSearchParams(window.location.search).get(
+  "location",
+);
+
+function getGamesForSelectedLocation() {
+  if (!selectedLocation) return allGames;
+
+  return allGames.filter(
+    (game) =>
+      game.location &&
+      game.location.toLowerCase().trim() ===
+        selectedLocation.toLowerCase().trim(),
+  );
+}
 
 // #2: Fetch games from JSON file
 async function getGames() {
@@ -37,7 +51,7 @@ async function getGames() {
   allGames = await response.json();
   console.log("📁 Games loaded:", allGames.length);
   // populateCategoryDropdown(); // Remove or comment out if not implemented
-  displayGames(allGames);
+  displayGames(getGamesForSelectedLocation());
 }
 
 // #3: Display all games
@@ -174,9 +188,9 @@ function showGameModal(id) {
   dialog
     .querySelector(".dialog-close")
     .addEventListener("click", () => dialog.close());
-    if (window.lucide) {
-      window.lucide.createIcons();
-    }
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
   dialog.showModal();
 }
 
@@ -199,7 +213,7 @@ function filterGames() {
   const playtimeValue = document.querySelector("#playtime-select").value;
 
   // Start med alle spil - kopieres efterfølgende
-  let filteredGames = allGames;
+  let filteredGames = getGamesForSelectedLocation();
 
   // filtrer på spil titel
   if (searchValue) {
@@ -289,7 +303,8 @@ if (filterBar) {
 
   filterButton.type = "button";
   filterButton.id = "filter-toggle";
-  filterButton.innerHTML = '<i data-lucide="sliders-horizontal" aria-hidden="true"></i><span>Filtrér (4)</span>';
+  filterButton.innerHTML =
+    '<i data-lucide="sliders-horizontal" aria-hidden="true"></i><span>Filtrér (4)</span>';
 
   filterBar.prepend(filterButton);
 
@@ -310,16 +325,17 @@ document.querySelector("#reset-filters").addEventListener("click", () => {
   document.querySelector("#players-select").value = "all";
   document.querySelector("#playtime-select").value = "all";
 
-  displayGames(allGames);
+  displayGames(getGamesForSelectedLocation());
 });
 
-//Vestergade spilgalleri
-function showVestergadeGames() {
+// Vis spil fra den valgte café
+function showLocationGames(location) {
   if (!allGames || allGames.length === 0) {
     return getGames().then(() => {
-      showVestergadeGames();
       const filtered = allGames.filter(
-        (g) => g.location && g.location.toLowerCase().trim() === "verstergade",
+        (game) =>
+          game.location &&
+          game.location.toLowerCase().trim() === location.toLowerCase().trim(),
       );
       displayGames(filtered);
       return filtered;
@@ -327,7 +343,9 @@ function showVestergadeGames() {
   }
 
   const filtered = allGames.filter(
-    (g) => g.location && g.location.toLowerCase().trim() === "verstergade",
+    (game) =>
+      game.location &&
+      game.location.toLowerCase().trim() === location.toLowerCase().trim(),
   );
   displayGames(filtered);
   return Promise.resolve(filtered);
