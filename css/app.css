@@ -31,7 +31,6 @@
   --transition: 250ms ease;
 }
 
-
 .spilgalleri-titel {
   font-family: var(--header-font-family);
   font-size: var(--spilgalleri-titel-fontsize);
@@ -40,7 +39,7 @@
 /* Card in general */
 /* Card */
 .game-card {
-  width: 100%; 
+  width: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -179,8 +178,6 @@
   text-transform: capitalize;
 }
 
-
-
 .card-titel {
   display: flex;
   flex-direction: column;
@@ -215,14 +212,19 @@ body {
   background-color: white;
   position: relative;
 }
-
-
-
+body.page-gallery {
+  display: block;
+  height: auto;
+  justify-content: initial;
+  align-items: initial;
+}
 .logo {
   width: 100px;
   opacity: 0;
   transform: scale(0.8);
-  transition: transform 1.2s ease-out, opacity 1.2s ease-out;
+  transition:
+    transform 1.2s ease-out,
+    opacity 1.2s ease-out;
 }
 
 .logo.animate {
@@ -279,7 +281,9 @@ footer {
   border-radius: 15px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
   cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
+  transition:
+    background 0.2s,
+    transform 0.2s;
 }
 
 .button:hover {
@@ -301,7 +305,9 @@ footer {
 /* fade-ind effekt */
 .location {
   opacity: 0; /* starter skjult */
-  transition: opacity 1s ease, transform 1s ease;
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
 }
 
 .location.fade-in {
@@ -310,19 +316,14 @@ footer {
 
 /*SPILGALLERISIDE*/
 /*Navbar*/
+
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 12px 16px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
   background-color: white;
   border-bottom: 1px solid #eee;
-  z-index: 1000;
-  height: 56px;
 }
 
 .title {
@@ -355,19 +356,14 @@ footer {
   flex-wrap: wrap;
   padding: 12px 16px;
   gap: 8px;
-  position: fixed;
-  top: 80px;
-  left: 0;
-  right: 0;
   background-color: #fff;
   border-bottom: 1px solid #eee;
   width: 100%;
   box-sizing: border-box;
-  z-index: 999;
 }
 
+
 .main-content {
-  padding-top: 180px;
   padding-bottom: 80px;
   margin-top: auto;
   display: flex;
@@ -413,8 +409,7 @@ main {
   justify-content: space-between;
   padding: 24px 16px;
   flex-direction: column;
-  gap: 6px
-  
+  gap: 6px;
 }
 
 .location-header {
@@ -423,15 +418,14 @@ main {
   font-weight: 700;
   color: #000;
   margin-bottom: 16px;
-  flex-direction: row
+  flex-direction: row;
 }
 
-
-
 /* --- ALLE SPIL (grid) --- */
+
 .game-list-all {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
   padding: 16px;
   max-width: 1200px;
@@ -450,19 +444,12 @@ main {
   margin: 0;
 }
 
-
-
 /* --- RESPONSIVE --- */
 
-/*@media (max-width: 768px) {
-  main {
-    margin: 20px;
-    padding: 20px;
-  }*/
 
-  @media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .game-list-all {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     gap: 16px;
     padding: 12px;
   }
@@ -478,15 +465,13 @@ main {
   }
 }
 
-  .location-section h2 {
-    font-size: 22px;
-  }
+.location-section h2 {
+  font-size: 22px;
+}
 
-  .game-scroll .game-card {
-    width: 180px;
-  }
-
-  
+.game-scroll .game-card {
+  width: 180px;
+}
 
 /* =====================
    SPIL GRID & CARDS
@@ -518,19 +503,16 @@ main {
 }
 
 #dialog-content {
-
   display: flex;
   flex-direction: column;
   max-height: calc(90vh - 40px);
-  overflow-y:auto; 
-  
+  overflow-y: auto;
 }
 
 #dialog-content img {
   width: 100%;
   height: 350px;
   object-fit: contain;
-  
 }
 
 .dialog-details {
@@ -539,7 +521,7 @@ main {
   flex-direction: column;
 }
 
-.modal{
+.modal {
   margin-top: 100px;
 }
 
@@ -579,19 +561,188 @@ main {
 
 /* Difficulty colors */
 .difficulty-easy {
-  background-color: #4CAF50; 
+  background-color: #4caf50;
 }
 
 .difficulty-medium {
-  background-color: #FFC107;  
-  color: #333 !important;     
+  background-color: #ffc107;
+  color: #333 !important;
 }
 
 .difficulty-hard {
-  background-color:#F44336; 
+  background-color: #f44336;
 }
 
 footer {
   font-family: var(--paragraph-font-family);
 }
 
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+.gallery-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: #fff;
+}
+
+.navbar {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.filter-group.search-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-group.search-group label {
+  font-family: var(--paragraph-font-family);
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+  white-space: nowrap;
+}
+
+#search-input {
+  box-sizing: border-box;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--tag-border-color);
+  border-radius: 20px;
+  font-family: var(--paragraph-font-family);
+  font-size: 14px;
+  min-width: 0;
+}
+
+.filter-bar .filter-group label {
+  display: block;
+  margin-bottom: 4px;
+  font-family: var(--paragraph-font-family);
+  font-size: 13px;
+  font-weight: 600;
+  color: #000;
+}
+
+.filter-bar .filter-group {
+  display: none;
+  order: 3;
+  box-sizing: border-box;
+}
+
+.filter-bar.filters-open {
+  justify-content: flex-start;
+}
+
+.filter-bar.filters-open .filter-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#filter-toggle {
+  order: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  background: #e9dfd7;
+  font-family: var(--paragraph-font-family);
+  font-size: 14px;
+  font-weight: 700;
+  color: #000;
+  cursor: pointer;
+}
+
+#filter-toggle:hover {
+  background: #ded2c5;
+}
+
+#reset-filters {
+  order: 2;
+  display: inline-block;
+  border: 1px solid var(--tag-border-color);
+  border-radius: 20px;
+  background: #fff;
+  padding: 8px 16px;
+  font-family: var(--paragraph-font-family);
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+  cursor: pointer;
+}
+
+
+
+#reset-filters:hover {
+  background: #f5f5f5;
+}
+
+.filter-bar select {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .filter-bar .filter-group {
+    width: calc(50% - 8px);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .navbar {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .filter-group.search-group {
+    width: 100%;
+    justify-content: center;
+  }
+
+  #search-input {
+    flex: 1;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px 16px;
+  }
+
+  .filter-bar .filter-group {
+    width: 100%;
+  }
+
+  #filter-toggle {
+    order: 1;
+    flex: 1;
+    justify-content: center;
+  }
+
+  #reset-filters {
+    order: 2;
+    flex: 0 0 auto;
+    border: none;
+    background: none;
+    text-decoration: underline;
+    padding: 8px 12px;
+  }
+
+  .filter-bar.filters-open #filter-toggle,
+  .filter-bar.filters-open #reset-filters {
+    flex: 1 1 auto;
+  }
+
+  #reset-filters:hover {
+    background: none;
+  }
+}
