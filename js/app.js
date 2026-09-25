@@ -38,6 +38,13 @@ async function getGames() {
 function displayGames(games) {
   const gameList = document.querySelector(".game-list-all");
   if (!gameList) return;
+
+  const resultsCount = document.querySelector("#results-count");
+  if (resultsCount) {
+    const resultLabel = games.length === 1 ? "resultat" : "resultater";
+    resultsCount.textContent = `${games.length} ${resultLabel}`;
+  }
+
   gameList.innerHTML = "";
 
   if (games.length === 0) {

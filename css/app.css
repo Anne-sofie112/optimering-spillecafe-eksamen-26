@@ -463,6 +463,16 @@ footer {
   margin-top: auto;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+}
+
+.results-count {
+  width: min(100% - 32px, 1200px);
+  margin: 16px auto 0;
+  color: var(--brand-secondary-text);
+  font-family: var(--paragraph-font-family);
+  font-size: var(--font-size-label);
+  line-height: var(--line-height-label);
 }
 
 .dropbtn {
