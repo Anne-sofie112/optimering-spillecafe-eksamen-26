@@ -996,6 +996,11 @@ body {
   background: var(--brand-surface);
 }
 
+#reset-filters:focus-visible {
+  outline: 3px solid var(--brand-focus);
+  outline-offset: 3px;
+}
+
 :focus-visible {
   outline: 3px solid var(--brand-focus);
   outline-offset: 2px;
