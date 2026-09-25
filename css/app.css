@@ -614,7 +614,7 @@ main {
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 600px) {
   .game-list-all {
     width: min(100%, 360px);
     padding: 8px;
@@ -1110,7 +1110,7 @@ body {
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 600px) {
   .navbar {
     justify-content: center;
     text-align: center;
