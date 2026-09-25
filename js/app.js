@@ -57,16 +57,16 @@ function displayGame(game) {
   if (!gameList) return;
 
   const gameHTML = `
-    <article class="game-card" tabindex="0" data-id="${game.id}">
-        <section class="top-card">
+    <button type="button" class="game-card" data-id="${game.id}">
+      <div class="top-card">
             <img src="${game.image}" 
             alt="${game.title}" 
             class="game-image" />
             <div class="age-tag">${game.age}</div>
             <div class="rating-tag">${game.rating}</div>
             <div class="difficulty-tag ${getDifficultyClass(game.difficulty)}">${game.difficulty}</div>
-        </section>
-        <section class="bottom-card">
+        </div>
+        <div class="bottom-card">
             <h2 class="card-titel">${game.title}</h2>
             <div class="tags">
               <i data-lucide="shapes" aria-hidden="true"></i><p>${game.genre}</p>
@@ -80,8 +80,8 @@ function displayGame(game) {
             <div class="tags">
               <i data-lucide="languages" aria-hidden="true"></i><p>${game.language}</p>
             </div>
-        </section>
-    </article>
+        </div>
+      </button>
   `;
   gameList.insertAdjacentHTML("beforeend", gameHTML);
 
