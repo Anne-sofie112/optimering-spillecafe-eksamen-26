@@ -97,9 +97,10 @@
 .top-card {
   position: relative;
   width: 100%;
-  height: 160px;
+  height: clamp(150px, 42vw, 220px);
   border-radius: 16px 16px 0 0;
   overflow: hidden;
+  background: var(--brand-secondary-surface);
 }
 
 /* Rating på billede */
@@ -165,8 +166,10 @@
 .game-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  background: var(--card-background-color);
+  object-fit: contain;
+  padding: 10px 14px;
+  box-sizing: border-box;
+  background: var(--brand-secondary-surface);
   transition: var(--transition);
   border-radius: 16px 16px 0 0;
   display: block;
@@ -545,12 +548,13 @@ main {
 
 .game-list-all {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
   padding: 16px;
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
   width: 100%;
+  box-sizing: border-box;
   justify-items: stretch;
   align-items: start;
 }
@@ -558,23 +562,32 @@ main {
 .top-card img {
   width: 100%;
   max-width: none;
-  height: 160px;
+  height: 100%;
   object-fit: contain;
+  padding: 10px 14px;
+  box-sizing: border-box;
   display: block;
   margin: 0;
 }
 
 /* --- RESPONSIVE --- */
 
+@media screen and (max-width: 1100px) {
+  .game-list-all {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media screen and (max-width: 768px) {
   .game-list-all {
     grid-template-columns: repeat(1, 1fr);
     gap: 16px;
-    padding: 12px;
+    width: min(100%, 430px);
+    padding: 12px 20px;
   }
 
   .top-card {
-    height: 140px; /* Slightly smaller images on mobile */
+    height: clamp(145px, 43vw, 190px);
   }
 }
 

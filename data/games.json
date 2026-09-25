@@ -54,7 +54,7 @@
     "id": 4,
     "title": "Partners",
     "description": "Moderne dansk familiespil.",
-    "image": "https://nordiskspil.dk/cdn/shop/files/PARTNERS_game.png?v=1757242935",
+    "image": "../img/partners-760.webp",
     "genre": "Familie",
     "playtime": 60,
     "players": { "min": 4, "max": 4 },

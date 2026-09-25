@@ -232,7 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
   filterButton.setAttribute("aria-expanded", "false");
   filterButton.setAttribute("aria-controls", "filter-controls");
   filterButton.innerHTML =
-    '<i data-lucide="sliders-horizontal" aria-hidden="true"></i><span>Filtrér (4)</span>';
+    '<i data-lucide="sliders-horizontal" aria-hidden="true"></i><span>Filtrér (5)</span>';
   filterBar.prepend(filterButton);
 
   filterButton.addEventListener("click", () => {
