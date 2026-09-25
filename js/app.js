@@ -1,27 +1,9 @@
 "use strict";
 
 /* ==========================
-   LOCATION (fade in)
+   SPILGALLERI
    ========================== */
 
-if (document.querySelector(".location")) {
-  document.addEventListener("DOMContentLoaded", () => {
-    const locationSection = document.querySelector(".location");
-
-    // Fade ind
-    setTimeout(() => locationSection.classList.add("fade-in"), 100);
-  });
-}
-
-/* ==========================
-   SPILGALLERI (navbar, dialog osv.)
-   ========================== */
-
-if (document.querySelector(".spilgalleri-titel")) {
-  console.log("🎮 Spilgalleri loaded");
-}
-
-// Back button (sikker måde)
 const backBtn = document.querySelector(".back-btn");
 if (backBtn) {
   backBtn.addEventListener("click", () => {
@@ -49,8 +31,6 @@ function getGamesForSelectedLocation() {
 async function getGames() {
   const response = await fetch("../data/games.json");
   allGames = await response.json();
-  console.log("📁 Games loaded:", allGames.length);
-  // populateCategoryDropdown(); // Remove or comment out if not implemented
   displayGames(getGamesForSelectedLocation());
 }
 
@@ -116,21 +96,6 @@ function displayGame(game) {
   });
 }
 
-// #6: Vis game details (Session 3 version - bliver erstattet med modal i Del 2)
-function showGameDetails(game) {
-  alert(`
-🎬 ${games.title} (${game.year})
-
-🎭 Genre: ${games.genre.join(", ")}
-⭐ Rating: ${games.rating}
-🎥 Director: ${games.director}
-👥 Actors: ${games.actors.join(", ")}
-
-📝 ${games.description}
-  `);
-}
-
-//Game Card Dialog
 function getDifficultyClass(difficulty) {
   switch (difficulty.toLowerCase()) {
     case "let":
@@ -194,14 +159,6 @@ function showGameModal(id) {
   dialog.showModal();
 }
 
-// Dropdown-menu //// Åbn/luk dropdowns
-
-// Load games on page load
-document.addEventListener("DOMContentLoaded", getGames);
-
-// FILTRERINGSSYSTEM //
-
-// værdier fra input felter
 function filterGames() {
   const searchValue = document
     .querySelector("#search-input")
@@ -212,42 +169,29 @@ function filterGames() {
   const playersValue = document.querySelector("#players-select").value;
   const playtimeValue = document.querySelector("#playtime-select").value;
 
-  // Start med alle spil - kopieres efterfølgende
   let filteredGames = getGamesForSelectedLocation();
 
-  // filtrer på spil titel
   if (searchValue) {
-    // Kun filtrer hvis der er indtastet noget
     filteredGames = filteredGames.filter((game) => {
-      // includes() checker om søgeteksten findes i titlen
       return game.title.toLowerCase().includes(searchValue);
     });
   }
 
-  // filtrer på valgt sværhedsgrad
   if (difficultyValue !== "all") {
-    // Kun filtrer hvis ikke "all" er valgt
     filteredGames = filteredGames.filter((game) => {
-      // Eksakt match på sværhedsgrad
       return game.difficulty === difficultyValue;
     });
   }
 
-  // FILTER 3: Alder - filtrer på aldersgrænse
   if (ageValue !== "all") {
-    // Kun filtrer hvis ikke "all" er valgt
     const filterAge = Number(ageValue) || 0;
     filteredGames = filteredGames.filter((game) => {
-      // Check om spillets alder er mindre eller lig filterens alder
       return game.age <= filterAge;
     });
   }
 
-  // filtrer på valgt genre
   if (genreValue !== "all") {
-    // Kun filtrer hvis ikke "all" er valgt
     filteredGames = filteredGames.filter((game) => {
-      // Eksakt match på genre
       return game.genre === genreValue;
     });
   }
@@ -258,95 +202,45 @@ function filterGames() {
     );
   }
 
-  // Spilletid - filtrer på spilletid
   if (playtimeValue !== "all") {
-    // Kun filtrer hvis ikke "all" er valgt
     const filterTime = Number(playtimeValue) || 0;
     filteredGames = filteredGames.filter((game) => {
-      // Check om spillets spilletid er større eller lig filterens tid
       return game.playtime >= filterTime;
     });
   }
 
-  // Vis de filtrerede spil på siden
   displayGames(filteredGames);
 }
 
-// Event listeners til alle filtre
 document.addEventListener("DOMContentLoaded", () => {
-  getGames();
+  const gallery = document.querySelector(".page-gallery");
+  if (!gallery) return;
 
-  // Event listener til søgning
-  document
-    .querySelector("#search-input")
-    .addEventListener("input", filterGames);
-
-  // Event listeners til alle filter-dropdowns
-  document
-    .querySelector("#difficulty-select")
-    .addEventListener("change", filterGames);
-  document.querySelector("#age-select").addEventListener("change", filterGames);
-  document
-    .querySelector("#genre-select")
-    .addEventListener("change", filterGames);
-  document
-    .querySelector("#players-select")
-    .addEventListener("change", filterGames);
-  document
-    .querySelector("#playtime-select")
-    .addEventListener("change", filterGames);
-});
-const filterBar = document.querySelector(".filter-bar");
-
-if (filterBar) {
+  const filterBar = document.querySelector(".filter-bar");
   const filterButton = document.createElement("button");
-
   filterButton.type = "button";
   filterButton.id = "filter-toggle";
   filterButton.innerHTML =
     '<i data-lucide="sliders-horizontal" aria-hidden="true"></i><span>Filtrér (4)</span>';
-
   filterBar.prepend(filterButton);
 
   filterButton.addEventListener("click", () => {
     filterBar.classList.toggle("filters-open");
   });
-}
 
-if (window.lucide) {
-  window.lucide.createIcons();
-}
+  document.querySelector("#search-input").addEventListener("input", filterGames);
+  document.querySelectorAll(".filter-bar select").forEach((select) => {
+    select.addEventListener("change", filterGames);
+  });
 
-document.querySelector("#reset-filters").addEventListener("click", () => {
-  document.querySelector("#search-input").value = "";
-  document.querySelector("#difficulty-select").value = "all";
-  document.querySelector("#age-select").value = "all";
-  document.querySelector("#genre-select").value = "all";
-  document.querySelector("#players-select").value = "all";
-  document.querySelector("#playtime-select").value = "all";
-
-  displayGames(getGamesForSelectedLocation());
-});
-
-// Vis spil fra den valgte café
-function showLocationGames(location) {
-  if (!allGames || allGames.length === 0) {
-    return getGames().then(() => {
-      const filtered = allGames.filter(
-        (game) =>
-          game.location &&
-          game.location.toLowerCase().trim() === location.toLowerCase().trim(),
-      );
-      displayGames(filtered);
-      return filtered;
+  document.querySelector("#reset-filters").addEventListener("click", () => {
+    document.querySelector("#search-input").value = "";
+    document.querySelectorAll(".filter-bar select").forEach((select) => {
+      select.value = "all";
     });
-  }
+    displayGames(getGamesForSelectedLocation());
+  });
 
-  const filtered = allGames.filter(
-    (game) =>
-      game.location &&
-      game.location.toLowerCase().trim() === location.toLowerCase().trim(),
-  );
-  displayGames(filtered);
-  return Promise.resolve(filtered);
-}
+  if (window.lucide) window.lucide.createIcons();
+  getGames();
+});
