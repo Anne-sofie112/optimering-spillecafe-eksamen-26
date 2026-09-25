@@ -68,7 +68,10 @@ function displayGame(game) {
       <div class="top-card">
             <img src="${game.image}" 
             alt="${game.title}" 
-            class="game-image" />
+              class="game-image"
+              loading="lazy"
+              width="760"
+              height="760" />
             <div class="age-tag">Fra ${game.age} år</div>
             <div class="rating-tag">${game.rating}</div>
             <div class="difficulty-tag ${getDifficultyClass(game.difficulty)}">${game.difficulty}</div>
