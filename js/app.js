@@ -62,7 +62,7 @@ function displayGames(games) {
 
   if (games.length === 0) {
     gameList.innerHTML =
-      '<p class="no-results">Ingen spil matchede dine filtre 😢</p>';
+      '<p class="no-results">Ingen spil matchede dine filtre </p>';
     return;
   }
 
@@ -84,7 +84,7 @@ function displayGame(game) {
             class="game-image" />
             <div class="age-tag">${game.age}</div>
             <div class="rating-tag">${game.rating}</div>
-            <div class="difficulty-tag">${game.difficulty}</div>
+            <div class="difficulty-tag ${getDifficultyClass(game.difficulty)}">${game.difficulty}</div>
         </section>
         <section class="bottom-card">
             <h2 class="card-titel">${game.title}</h2>
