@@ -49,6 +49,7 @@
   flex-direction: column;
   position: relative;
   border: 0;
+  appearance: none;
   border-radius: 16px;
   background: var(--card-background-color);
   box-shadow: var(--shadow);
@@ -57,6 +58,19 @@
   text-align: left;
   cursor: pointer;
   z-index: 1;
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.game-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(26, 26, 26, 0.16);
+}
+
+.game-card:focus-visible {
+  outline: 3px solid var(--brand-focus);
+  outline-offset: 4px;
 }
 
 .tags {

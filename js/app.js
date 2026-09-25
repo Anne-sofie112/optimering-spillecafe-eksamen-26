@@ -69,23 +69,23 @@ function displayGame(game) {
             <img src="${game.image}" 
             alt="${game.title}" 
             class="game-image" />
-            <div class="age-tag">${game.age}</div>
+            <div class="age-tag">Fra ${game.age} år</div>
             <div class="rating-tag">${game.rating}</div>
             <div class="difficulty-tag ${getDifficultyClass(game.difficulty)}">${game.difficulty}</div>
         </div>
         <div class="bottom-card">
             <h2 class="card-titel">${game.title}</h2>
             <div class="tags">
-              <i data-lucide="shapes" aria-hidden="true"></i><p>${game.genre}</p>
+              <i data-lucide="shapes" aria-hidden="true"></i><p>Genre: ${game.genre}</p>
             </div>
             <div class="tags">
-              <i data-lucide="clock-3" aria-hidden="true"></i><p>${game.playtime}</p>
+              <i data-lucide="clock-3" aria-hidden="true"></i><p>Spilletid: ${game.playtime} min.</p>
             </div>
             <div class="tags">
-              <i data-lucide="users" aria-hidden="true"></i><p>${game.players.min}-${game.players.max}</p>
+              <i data-lucide="users" aria-hidden="true"></i><p>Antal spillere: ${game.players.min}–${game.players.max} spillere</p>
             </div>
             <div class="tags">
-              <i data-lucide="languages" aria-hidden="true"></i><p>${game.language}</p>
+              <i data-lucide="cake" aria-hidden="true"></i><p>Alder: Fra ${game.age} år</p>
             </div>
         </div>
       </button>
