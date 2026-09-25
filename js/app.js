@@ -12,6 +12,7 @@ if (backBtn) {
 }
 
 let allGames = [];
+let activeGameCard = null;
 const selectedLocation = new URLSearchParams(window.location.search).get(
   "location",
 );
@@ -64,7 +65,7 @@ function displayGame(game) {
   if (!gameList) return;
 
   const gameHTML = `
-    <button type="button" class="game-card" data-id="${game.id}">
+    <button type="button" class="game-card" data-id="${game.id}" aria-haspopup="dialog" aria-expanded="false" aria-controls="game-dialog">
       <div class="top-card">
             <img src="${game.image}" 
             alt="${game.title}" 
@@ -124,6 +125,14 @@ function showGameModal(id) {
 
   if (!game) return;
 
+  activeGameCard = document.querySelector(`.game-card[data-id="${id}"]`);
+  if (activeGameCard) {
+    activeGameCard.setAttribute("aria-expanded", "true");
+  }
+
+  const dialog = document.querySelector("#game-dialog");
+  dialog.setAttribute("aria-labelledby", `dialog-title-${game.id}`);
+
   document.querySelector("#dialog-content").innerHTML = `
     <div class="dialog-topbar">
       <button type="button" class="dialog-close" aria-label="Luk spilinformation">× <span>Luk</span></button>
@@ -135,7 +144,7 @@ function showGameModal(id) {
 
     <div class="dialog-details">
       <div class="dialog-title-row">
-        <h2>${game.title}</h2>
+        <h2 id="dialog-title-${game.id}">${game.title}</h2>
         <span class="dialog-difficulty ${getDifficultyClass(game.difficulty)}">Sværhedsgrad: ${game.difficulty}</span>
       </div>
       <p class="dialog-summary">${game.genre} <span aria-hidden="true">·</span> <span class="dialog-star">★</span> Bedømmelse ${game.rating} ud af 5</p>
@@ -159,7 +168,6 @@ function showGameModal(id) {
     </div>
   `;
 
-  const dialog = document.querySelector("#game-dialog");
   dialog
     .querySelector(".dialog-close")
     .addEventListener("click", () => dialog.close());
@@ -167,6 +175,7 @@ function showGameModal(id) {
     window.lucide.createIcons();
   }
   dialog.showModal();
+  dialog.querySelector(".dialog-close").focus();
 }
 
 function filterGames() {
@@ -225,6 +234,26 @@ function filterGames() {
 document.addEventListener("DOMContentLoaded", () => {
   const gallery = document.querySelector(".page-gallery");
   if (!gallery) return;
+
+  const dialog = document.querySelector("#game-dialog");
+  dialog.addEventListener("cancel", (event) => {
+    event.preventDefault();
+    dialog.close();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && dialog.open) {
+      event.preventDefault();
+      dialog.close();
+    }
+  });
+
+  dialog.addEventListener("close", () => {
+    if (!activeGameCard) return;
+    activeGameCard.setAttribute("aria-expanded", "false");
+    activeGameCard.focus();
+    activeGameCard = null;
+  });
 
   const filterBar = document.querySelector(".filter-bar");
   filterBar.id = "filter-controls";

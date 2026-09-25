@@ -16,6 +16,7 @@
   <body class="page-gallery">
     <div class="gallery-topbar">
       <header class="navbar">
+        <img src="../img/logo.png" alt="Spilcaféen" class="gallery-logo" />
         <button class="back-btn" aria-label="Tilbage til valg af café">
           ←
         </button>
@@ -122,21 +123,13 @@
           id="reset-filters"
           aria-label="Nulstil alle filtre"
         >
-          <i data-lucide="rotate-ccw" aria-hidden="true"></i>Nulstil filtre
+          Nulstil filtre
         </button>
       </section>
     </div>
 
     <main class="main-content">
       <p id="results-count" class="results-count" aria-live="polite"></p>
-
-      <!--Vestergade spil sektion-->
-      <section class="location-section">
-        <!-- Spilcards bliver indsat her via JS -->
-      </section>
-
-      <!--Alle spil sektion-->
-
       <section class="game-list-all"></section>
     </main>
 
@@ -146,7 +139,7 @@
     </footer>
 
     <!-- Game Detail Modal -->
-    <dialog id="game-dialog" aria-label="Spilinformation">
+    <dialog id="game-dialog" aria-label="Spilinformation" aria-modal="true">
       <form method="dialog">
         <div id="dialog-content"></div>
       </form>
