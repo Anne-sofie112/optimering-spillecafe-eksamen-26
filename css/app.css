@@ -1,15 +1,23 @@
 /* this is updated */
 :root {
   /* Text styles */
-  --header-font-family: "poppins";
-  --paragraph-font-family: "montserrat";
-  --tag-font-family: "roboto mono";
+  --header-font-family: "Poppins", sans-serif;
+  --paragraph-font-family: "Poppins", sans-serif;
+  --tag-font-family: "Poppins", sans-serif;
+  --font-size-h1: 32px;
+  --font-size-h2: 22px;
+  --font-size-h3: 18px;
+  --font-size-body: 16px;
+  --font-size-label: 14px;
+  --line-height-heading: 1.25;
+  --line-height-body: 1.6;
+  --line-height-label: 1.4;
   --card-fontsize-header-1: 14px;
   --description-fontsize-header-1: 32px;
   --description-fontsize-header-2: 16px;
   --description-fontsize-header-3: 12px;
   --description-fontsize-paragraph: 16px;
-  --tag-fontsize: 10px;
+  --tag-fontsize: 14px;
   --rating-desciption-fontsize: 6px;
   --rating-card-fontsize: 12px;
   --spilgalleri-titel-fontsize: 20px;
@@ -33,7 +41,9 @@
 
 .spilgalleri-titel {
   font-family: var(--header-font-family);
-  font-size: var(--spilgalleri-titel-fontsize);
+  font-size: var(--font-size-h1);
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 /* Card in general */
@@ -65,9 +75,9 @@
   font-family: var(--tag-font-family);
   font-size: var(--tag-fontsize);
   font-style: normal;
-  font-weight: 700;
-  line-height: 15px;
-  letter-spacing: -0.11px;
+  font-weight: 400;
+  line-height: var(--line-height-label);
+  letter-spacing: 0;
 }
 
 /* Øvre card */
@@ -184,7 +194,9 @@
   align-items: flex-start;
   align-self: stretch;
   font-family: var(--header-font-family);
-  font-size: var(--card-fontsize-header-1);
+  font-size: var(--font-size-h2);
+  font-weight: 700;
+  line-height: var(--line-height-heading);
   margin: 0;
   padding: 0;
 }
@@ -280,20 +292,20 @@ body {
   margin: 0 0 22px;
   color: #111;
   font-family: var(--header-font-family);
-  font-size: clamp(2.5rem, 8vw, 4.1rem);
+  font-size: var(--font-size-h1);
   font-weight: 800;
-  line-height: 0.95;
-  letter-spacing: -0.06em;
+  line-height: 1.2;
+  letter-spacing: 0;
 }
 
 .location-page__subtitle {
   margin: 0 0 28px;
   color: #5f5b58;
   font-family: var(--paragraph-font-family);
-  font-size: clamp(1.25rem, 3.5vw, 1.8rem);
+  font-size: var(--font-size-body);
   font-weight: 400;
-  line-height: 1.25;
-  letter-spacing: -0.03em;
+  line-height: var(--line-height-body);
+  letter-spacing: 0;
 }
 
 .location-list {
@@ -334,10 +346,10 @@ body {
 
 .location-choice__name {
   font-family: var(--header-font-family);
-  font-size: clamp(2.7rem, 7vw, 4.2rem);
+  font-size: var(--font-size-h2);
   font-weight: 800;
-  line-height: 0.9;
-  letter-spacing: -0.065em;
+  line-height: var(--line-height-heading);
+  letter-spacing: 0;
   color: #111;
 }
 
@@ -497,9 +509,10 @@ main {
 
 .location-header {
   font-family: var(--header-font-family);
-  font-size: 28px;
+  font-size: var(--font-size-h2);
   font-weight: 700;
   color: #000;
+  line-height: var(--line-height-heading);
   margin-bottom: 16px;
   flex-direction: row;
 }
@@ -662,8 +675,9 @@ main {
 
 .dialog-details h2 {
   margin: 0;
-  font: 800 clamp(27px, 4vw, 36px)/1.1 var(--header-font-family);
-  letter-spacing: -1px;
+  font: 700 var(--font-size-h2)/var(--line-height-heading)
+    var(--header-font-family);
+  letter-spacing: 0;
 }
 
 .dialog-difficulty {
@@ -678,7 +692,8 @@ main {
 .dialog-summary {
   margin: 6px 0 16px;
   color: #5e5955;
-  font: 500 clamp(14px, 2vw, 17px) var(--paragraph-font-family);
+  font: 400 var(--font-size-body)/var(--line-height-body)
+    var(--paragraph-font-family);
 }
 
 .dialog-star {
@@ -766,7 +781,8 @@ main {
   padding: 13px 17px;
   cursor: pointer;
   list-style: none;
-  font: 700 clamp(17px, 3vw, 20px) var(--header-font-family);
+  font: 700 var(--font-size-h3)/var(--line-height-heading)
+    var(--header-font-family);
 }
 
 .dialog-about summary::-webkit-details-marker {
@@ -777,7 +793,8 @@ main {
   margin: 0;
   padding: 0 25px 22px;
   color: #5e5955;
-  line-height: 1.6;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
 }
 
 @media screen and (max-width: 600px) {
@@ -878,7 +895,8 @@ body {
 .filter-group.search-group label {
   display: inline-flex;
   font-family: var(--paragraph-font-family);
-  font-size: 14px;
+  font-size: var(--font-size-label);
+  line-height: var(--line-height-label);
   font-weight: 600;
   color: #000;
   white-space: nowrap;
@@ -913,7 +931,8 @@ body {
   align-items: center;
   margin-bottom: 4px;
   font-family: var(--paragraph-font-family);
-  font-size: 13px;
+  font-size: var(--font-size-label);
+  line-height: var(--line-height-label);
   font-weight: 600;
   color: #000;
 }
@@ -944,7 +963,8 @@ body {
   border-radius: 20px;
   background: #e9dfd7;
   font-family: var(--paragraph-font-family);
-  font-size: 14px;
+  font-size: var(--font-size-label);
+  line-height: var(--line-height-label);
   font-weight: 700;
   color: #000;
   cursor: pointer;
@@ -962,7 +982,8 @@ body {
   background: #fff;
   padding: 8px 16px;
   font-family: var(--paragraph-font-family);
-  font-size: 14px;
+  font-size: var(--font-size-label);
+  line-height: var(--line-height-label);
   font-weight: 600;
   color: #000;
   cursor: pointer;
