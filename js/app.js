@@ -217,15 +217,23 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!gallery) return;
 
   const filterBar = document.querySelector(".filter-bar");
+  filterBar.id = "filter-controls";
+
   const filterButton = document.createElement("button");
   filterButton.type = "button";
   filterButton.id = "filter-toggle";
+  filterButton.setAttribute("aria-expanded", "false");
+  filterButton.setAttribute("aria-controls", "filter-controls");
   filterButton.innerHTML =
     '<i data-lucide="sliders-horizontal" aria-hidden="true"></i><span>Filtrér (4)</span>';
   filterBar.prepend(filterButton);
 
   filterButton.addEventListener("click", () => {
     filterBar.classList.toggle("filters-open");
+    filterButton.setAttribute(
+      "aria-expanded",
+      String(filterBar.classList.contains("filters-open")),
+    );
   });
 
   document.querySelector("#search-input").addEventListener("input", filterGames);
