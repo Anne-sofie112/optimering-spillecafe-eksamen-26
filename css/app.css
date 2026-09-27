@@ -350,9 +350,6 @@ body {
 .location-choice__image {
   width: 100%;
   height: 220px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   display: block;
   border-radius: 0;
   object-fit: cover;
@@ -389,22 +386,6 @@ body {
   color: #121212;
   flex-shrink: 0;
   line-height: 1;
-}
-
-.location-choice__image--vestergade {
-  background-image: url("../img/cafevestergade.webp");
-}
-
-.location-choice__image--fredensgade {
-  background-image: url("../img/cafefredensgade.webp");
-}
-
-.location-choice__image--aalborg {
-  background-image: url("../img/cafeaalborg.webp");
-}
-
-.location-choice__image--kolding {
-  background-image: url("../img/cafekolding.webp");
 }
 
 footer {
