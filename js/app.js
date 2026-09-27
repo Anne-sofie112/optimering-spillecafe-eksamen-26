@@ -7,7 +7,7 @@
 const backBtn = document.querySelector(".back-btn");
 if (backBtn) {
   backBtn.addEventListener("click", () => {
-    window.location.href = "../sites/location.html";
+    window.location.href = "../index.html";
   });
 }
 
