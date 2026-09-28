@@ -4,13 +4,6 @@
    SPILGALLERI
    ========================== */
 
-const backBtn = document.querySelector(".back-btn");
-if (backBtn) {
-  backBtn.addEventListener("click", () => {
-    window.location.href = "../index.html";
-  });
-}
-
 let allGames = [];
 let activeGameCard = null;
 const selectedLocation = new URLSearchParams(window.location.search).get(
@@ -59,6 +52,23 @@ function displayGames(games) {
   }
 }
 
+const iconPaths = {
+  shapes:
+    '<rect x="3" y="3" width="8" height="8" rx="1"/><circle cx="17" cy="7" r="4"/><path d="m13 21 4-7 4 7z"/>',
+  "clock-3": '<circle cx="12" cy="12" r="10"/><path d="M12 6v6h4"/>',
+  users:
+    '<path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M20 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+  cake: '<path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/><path d="M4 16s.5-2 4-2 4 2 4 2 1-2 4-2 4 2 4 2"/><path d="M2 21h20"/><path d="M7 8v2M12 8v2M17 8v2M7 4h.01M12 4h.01M17 4h.01"/>',
+  languages:
+    '<path d="m5 8 6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/>',
+  "sliders-horizontal":
+    '<path d="M21 4h-7M10 4H3M21 12h-9M8 12H3M21 20h-5M12 20H3M14 2v4M8 10v4M16 18v4"/>',
+};
+
+function iconSvg(name) {
+  return `<svg class="lucide lucide-${name}" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${iconPaths[name]}</svg>`;
+}
+
 // #4: Render a single game card and add event listeners
 function displayGame(game) {
   const gameList = document.querySelector(".game-list-all");
@@ -80,25 +90,21 @@ function displayGame(game) {
         <div class="bottom-card">
             <h2 class="card-titel">${game.title}</h2>
             <div class="tags">
-              <i data-lucide="shapes" aria-hidden="true"></i><p>Genre: ${game.genre}</p>
+              ${iconSvg("shapes")}<p>Genre: ${game.genre}</p>
             </div>
             <div class="tags">
-              <i data-lucide="clock-3" aria-hidden="true"></i><p>Spilletid: ${game.playtime} min.</p>
+              ${iconSvg("clock-3")}<p>Spilletid: ${game.playtime} min.</p>
             </div>
             <div class="tags">
-              <i data-lucide="users" aria-hidden="true"></i><p>Antal spillere: ${game.players.min}–${game.players.max} spillere</p>
+              ${iconSvg("users")}<p>Antal spillere: ${game.players.min}–${game.players.max} spillere</p>
             </div>
             <div class="tags">
-              <i data-lucide="cake" aria-hidden="true"></i><p>Alder: Fra ${game.age} år</p>
+              ${iconSvg("cake")}<p>Alder: Fra ${game.age} år</p>
             </div>
         </div>
       </button>
   `;
   gameList.insertAdjacentHTML("beforeend", gameHTML);
-
-  if (window.lucide) {
-    window.lucide.createIcons();
-  }
 
   // Tilføj click event til den nye card
   const newCard = gameList.lastElementChild;
@@ -159,10 +165,10 @@ function showGameModal(id) {
       </div>
 
       <dl class="dialog-info-list">
-          <div><dt><i data-lucide="clock-3" aria-hidden="true"></i>Spilletid</dt><dd>${game.playtime} min</dd></div>
-          <div><dt><i data-lucide="users" aria-hidden="true"></i>Spillere</dt><dd>${game.players.min}–${game.players.max} personer</dd></div>
-          <div><dt><i data-lucide="cake" aria-hidden="true"></i>Alder</dt><dd>Fra ${game.age} år</dd></div>
-          <div><dt><i data-lucide="languages" aria-hidden="true"></i>Sprog</dt><dd>${game.language}</dd></div>
+          <div><dt>${iconSvg("clock-3")}Spilletid</dt><dd>${game.playtime} min</dd></div>
+          <div><dt>${iconSvg("users")}Spillere</dt><dd>${game.players.min}–${game.players.max} personer</dd></div>
+          <div><dt>${iconSvg("cake")}Alder</dt><dd>Fra ${game.age} år</dd></div>
+          <div><dt>${iconSvg("languages")}Sprog</dt><dd>${game.language}</dd></div>
       </dl>
 
       <details class="dialog-about">
@@ -175,9 +181,6 @@ function showGameModal(id) {
   dialog
     .querySelector(".dialog-close")
     .addEventListener("click", () => dialog.close());
-  if (window.lucide) {
-    window.lucide.createIcons();
-  }
   dialog.showModal();
   dialog.querySelector(".dialog-close").focus();
 }
@@ -267,8 +270,7 @@ document.addEventListener("DOMContentLoaded", () => {
   filterButton.id = "filter-toggle";
   filterButton.setAttribute("aria-expanded", "false");
   filterButton.setAttribute("aria-controls", "filter-controls");
-  filterButton.innerHTML =
-    '<i data-lucide="sliders-horizontal" aria-hidden="true"></i><span>Filtrér (5)</span>';
+  filterButton.innerHTML = `${iconSvg("sliders-horizontal")}<span>Filtrér (5)</span>`;
   filterBar.prepend(filterButton);
 
   filterButton.addEventListener("click", () => {
@@ -294,6 +296,5 @@ document.addEventListener("DOMContentLoaded", () => {
     displayGames(getGamesForSelectedLocation());
   });
 
-  if (window.lucide) window.lucide.createIcons();
   getGames();
 });

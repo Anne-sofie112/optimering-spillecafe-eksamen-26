@@ -113,6 +113,7 @@
 }
 
 .tags p {
+  margin: 0;
   font-family: var(--tag-font-family);
   font-size: var(--tag-fontsize);
   font-style: normal;
@@ -807,6 +808,16 @@ body {
   min-height: 44px;
   box-sizing: border-box;
   text-decoration: none;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--brand-primary-text);
+  border: 1.5px solid var(--tag-border-color);
+  border-radius: 50%;
+  background: var(--card-background-color);
+}
+
+.navbar .back-btn:visited {
+  color: var(--brand-primary-text);
 }
 
 .gallery-logo {
