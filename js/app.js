@@ -59,17 +59,6 @@ function displayGames(games) {
   }
 }
 
-function getGameImageSrcset(game) {
-  const imageBase = game.image.replace(/-\d+\.webp$/, "");
-  const variantWidths = game.imageWidth <= 320 ? [160] : [320, 480];
-  const sources = variantWidths
-    .filter((width) => width < game.imageWidth)
-    .map((width) => `${imageBase}-${width}.webp ${width}w`);
-
-  sources.push(`${game.image} ${game.imageWidth}w`);
-  return sources.join(", ");
-}
-
 // #4: Render a single game card and add event listeners
 function displayGame(game) {
   const gameList = document.querySelector(".game-list-all");
@@ -79,11 +68,9 @@ function displayGame(game) {
     <button type="button" class="game-card" data-id="${game.id}" aria-haspopup="dialog" aria-expanded="false" aria-controls="game-dialog">
       <div class="top-card">
             <img src="${game.image}"
-            srcset="${getGameImageSrcset(game)}"
-            sizes="(max-width: 360px) calc(100vw - 16px), (max-width: 768px) 344px, (max-width: 1100px) calc(50vw - 28px), (max-width: 1264px) calc(25vw - 26px), 284px"
             alt="${game.title}" 
               class="game-image"
-              loading="lazy"
+              ${gameList.childElementCount ? 'loading="lazy"' : ""}
               width="760"
               height="760" />
             <div class="age-tag">Fra ${game.age} år</div>
@@ -154,8 +141,6 @@ function showGameModal(id) {
     <div class="dialog-image-wrap">
       <img
         src="${game.image}"
-        srcset="${getGameImageSrcset(game)}"
-        sizes="(max-width: 752px) calc(100vw - 92px), 660px"
         alt="${game.title}"
         class="dialog-game-image"
       />
