@@ -70,7 +70,7 @@ function displayGame(game) {
             <img src="${game.image}"
             alt="${game.title}" 
               class="game-image"
-              ${gameList.childElementCount ? 'loading="lazy"' : ""}
+              ${gameList.childElementCount === 0 ? 'fetchpriority="high"' : 'loading="lazy"'}
               width="760"
               height="760" />
             <div class="age-tag">Fra ${game.age} år</div>

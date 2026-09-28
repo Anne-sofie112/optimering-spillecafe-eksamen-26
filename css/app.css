@@ -64,14 +64,7 @@
   --line-height-label: 1.4;
   --tag-fontsize: 14px;
   --card-background-color: var(--brand-surface);
-  --tag-background-color: var(--brand-surface);
   --tag-border-color: var(--brand-border);
-  --rating-yellow-gradient: linear-gradient(
-    to bottom,
-    #e6cd53 16%,
-    #ffe35a 51%,
-    #e6cd53 88%
-  );
   --shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
   --transition: 250ms ease;
 }
@@ -119,17 +112,6 @@
   outline-offset: 4px;
 }
 
-.tags {
-  padding: 8px 4px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 16px;
-  border: 0.5px solid var(--tag-border-color);
-  background: var(--tag-background-color);
-  box-shadow: var(--shadow);
-  height: 15px;
-}
-
 .tags p {
   font-family: var(--tag-font-family);
   font-size: var(--tag-fontsize);
@@ -147,65 +129,6 @@
   border-radius: 16px 16px 0 0;
   overflow: hidden;
   background: var(--brand-secondary-surface);
-}
-
-/* Rating på billede */
-.rating {
-  display: inline-flex;
-  padding: 4px 8px 4px 4px;
-  justify-content: center;
-  align-items: center;
-  gap: 4px;
-  border-radius: 0 16px 16px 0;
-  background: var(--rating-yellow-gradient);
-  box-shadow: var(--shadow);
-  z-index: 20;
-}
-
-.rating p {
-  font-family: var(--tag-font-family);
-  font-size: var(--rating-card-fontsize);
-  color: black;
-}
-
-/* Aldersgrænse på billede */
-.age {
-  display: inline-flex;
-  padding: 4px 12px 4px 8px;
-  justify-content: flex-end;
-  align-items: flex-start;
-  gap: 8px;
-  border-radius: 16px 0 0 16px;
-  background: var(--card-background-color);
-  z-index: 20;
-}
-
-.age p {
-  font-family: var(--tag-font-family);
-  font: var(--rating-card-fontsize);
-  color: black;
-}
-
-/* Sværhedsgrad på billede */
-.difficulty {
-  display: inline-flex;
-  padding: 4px 8px 4px 4px;
-  justify-content: center;
-  align-items: center;
-  gap: 4px;
-  border-radius: 0 16px 16px 0;
-  background: var(--card-background-color);
-  box-shadow: var(--shadow);
-  z-index: 20;
-  position: absolute;
-  bottom: 135px;
-  left: 0;
-}
-
-.difficulty p {
-  font-family: var(--tag-font-family);
-  font: var(--rating-card-fontsize);
-  color: black;
 }
 
 /* Billede af brætspil */
@@ -273,6 +196,7 @@
   border: 0.5px solid var(--tag-border-color);
   background: var(--card-background-color);
   box-shadow: var(--shadow);
+  height: 15px;
 }
 
 .tags svg {
@@ -285,12 +209,7 @@
 /* FORSIDE */
 
 body {
-  margin: 0;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--brand-background);
   color: var(--brand-primary-text);
   position: relative;
 }
@@ -300,24 +219,7 @@ body.page-gallery {
   justify-content: initial;
   align-items: initial;
 }
-.logo {
-  width: 100px;
-  opacity: 0;
-  transform: scale(0.8);
-  transition:
-    transform 1.2s ease-out,
-    opacity 1.2s ease-out;
-}
-
-.logo.animate {
-  transform: scale(2.5);
-  opacity: 1;
-}
-
 footer {
-  position: fixed; /* Footer fastlåses i forhold til viewport */
-  bottom: 0; /* Lige ved bunden */
-  left: 50%; /* Flytter venstre kant til midten */
   transform: translateX(-50%); /* Center footer horisontalt */
   color: black; /* Tekstfarve */
   padding: 10px 20px; /* Indvendig margin */
@@ -441,14 +343,12 @@ footer {
   margin-top: 8px;
 }
 
-.location-page__hero,
 .location-choice {
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
 }
 
-.location-page__hero:hover,
 .location-choice:hover {
   transform: translateY(-1px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
@@ -466,28 +366,6 @@ footer {
   border-bottom: 1px solid var(--brand-secondary-surface);
   padding-left: max(72px, calc((100% - 1240px) / 2));
   padding-right: max(24px, calc((100% - 1240px) / 2));
-}
-
-.title {
-  font-size: 1.4rem;
-  font-weight: 700;
-  text-align: center;
-}
-
-.navbar .back-btn a {
-  list-style: none;
-  text-decoration: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: black;
-}
-
-.search-btn {
-  background: none;
-  border: none;
-  font-size: 1.3rem;
-  cursor: pointer;
 }
 
 /* Filter bar */
@@ -521,15 +399,6 @@ footer {
   line-height: var(--line-height-label);
 }
 
-.dropbtn {
-  background-color: var(--brand-secondary-surface);
-  border: none;
-  border-radius: 8px;
-  padding: 8px 14px;
-  font-size: 0.95rem;
-  cursor: pointer;
-}
-
 .filter-group select {
   background-color: var(--brand-secondary-surface);
   border: none;
@@ -538,11 +407,6 @@ footer {
   padding: 8px 30px 8px 12px;
   font-size: 14px;
   cursor: pointer;
-}
-
-/* Show dropdown on click */
-.show {
-  display: block;
 }
 
 /*Vestergade & alle spil sektion*/
@@ -554,25 +418,6 @@ main {
 }
 
 /* --- SEKTIONER --- */
-.location-section {
-  margin-bottom: 18px;
-  display: flex;
-  justify-content: space-between;
-  padding: 24px 16px;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.location-header {
-  font-family: var(--header-font-family);
-  font-size: var(--font-size-h2);
-  font-weight: 700;
-  color: var(--brand-primary-text);
-  line-height: var(--line-height-heading);
-  margin-bottom: 16px;
-  flex-direction: row;
-}
-
 /* --- ALLE SPIL (grid) --- */
 
 .game-list-all {
@@ -650,24 +495,6 @@ main {
     top: 12px;
     left: 60px;
   }
-}
-
-.location-section h2 {
-  font-size: 22px;
-}
-
-.game-scroll .game-card {
-  width: 180px;
-}
-
-/* =====================
-   SPIL GRID & CARDS
-   ===================== */
-#game-list-all {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(1.5rem, 3vw, 2.5rem);
-  padding: 10rem 0;
 }
 
 /* ====== DIALOG ====== */
@@ -923,23 +750,6 @@ main {
     min-height: 18px;
     align-items: center;
   }
-}
-
-/*Sværhedgrads knap på Dialog*/
-
-.dialog-tags {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
-}
-
-.dialog-tags .difficulty-tag {
-  padding: 4px 12px;
-  border-radius: 16px;
-  font-family: var(--tag-font-family);
-  font-size: var(--tag-fontsize);
-  font-weight: bold;
-  color: white;
 }
 
 /* Difficulty colors */
