@@ -45,7 +45,8 @@
         </div>
       </header>
 
-      <section class="filter-bar">
+      <section class="filter-bar" aria-labelledby="filter-heading">
+        <h2 id="filter-heading" class="sr-only">Filtre</h2>
         <div class="filter-group">
           <label for="difficulty-select"
             ><svg
@@ -215,12 +216,13 @@
 
     <main class="main-content">
       <p id="results-count" class="results-count" aria-live="polite"></p>
-      <section class="game-list-all"></section>
+      <section class="game-list-all" aria-labelledby="results-heading">
+        <h2 id="results-heading" class="sr-only">Spilresultater</h2>
+      </section>
     </main>
 
     <!-- Footer -->
-    <footer>
-    </footer>
+    <footer></footer>
 
     <!-- Game Detail Modal -->
     <dialog id="game-dialog" aria-label="Spilinformation" aria-modal="true">
